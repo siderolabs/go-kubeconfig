@@ -1,0 +1,14 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
+#
+# Generated on 2022-10-24T18:38:48Z by kres ef0ba25.
+
+**
+!kubeconfig.go
+!kubeconfig_test.go
+!merge.go
+!merge_test.go
+!go.mod
+!go.sum
+!.golangci.yml
+!README.md
+!.markdownlint.json
