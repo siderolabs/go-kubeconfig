@@ -359,8 +359,6 @@ func TestMerger(t *testing.T) {
 			},
 		},
 	} {
-		tt := tt
-
 		t.Run(tt.name, func(t *testing.T) {
 			merger := kubeconfig.Merger(*tt.initial.DeepCopy())
 

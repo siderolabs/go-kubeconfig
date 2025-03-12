@@ -40,12 +40,11 @@ func TestSinglePath(t *testing.T) {
 			shouldErr: true,
 		},
 	} {
-		tt := tt
-
 		t.Run(tt.name, func(t *testing.T) {
 			if tt.envVar != "" {
 				t.Setenv("KUBECONFIG", tt.envVar)
 			}
+
 			result, err := kubeconfig.SinglePath()
 
 			if tt.shouldErr {

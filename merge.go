@@ -155,7 +155,7 @@ func (merger *Merger) Merge(config *clientcmdapi.Config, options MergeOptions) e
 		newName := mappedClusters[name]
 
 		if newName != name {
-			fmt.Fprintf(options.OutputWriter, "renamed cluster %q -> %q\n", name, newName)
+			fmt.Fprintf(options.OutputWriter, "renamed cluster %q -> %q\n", name, newName) //nolint:errcheck
 		}
 
 		merger.Clusters[newName] = cluster
@@ -165,7 +165,7 @@ func (merger *Merger) Merge(config *clientcmdapi.Config, options MergeOptions) e
 		newName := mappedAuthInfos[name]
 
 		if newName != name {
-			fmt.Fprintf(options.OutputWriter, "renamed auth info %q -> %q\n", name, newName)
+			fmt.Fprintf(options.OutputWriter, "renamed auth info %q -> %q\n", name, newName) //nolint:errcheck
 		}
 
 		merger.AuthInfos[newName] = authInfo
@@ -177,7 +177,7 @@ func (merger *Merger) Merge(config *clientcmdapi.Config, options MergeOptions) e
 		newName := mappedContexts[name]
 
 		if newName != name {
-			fmt.Fprintf(options.OutputWriter, "renamed context %q -> %q\n", name, newName)
+			fmt.Fprintf(options.OutputWriter, "renamed context %q -> %q\n", name, newName) //nolint:errcheck
 		}
 
 		contextCopy.AuthInfo = mappedAuthInfos[contextCopy.AuthInfo]
