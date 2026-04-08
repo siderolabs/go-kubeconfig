@@ -17,6 +17,11 @@ import (
 // Merger handles merging of Kubernetes client config files.
 type Merger clientcmdapi.Config
 
+// New returns an empty Merger with initialized maps.
+func New() *Merger {
+	return (*Merger)(clientcmdapi.NewConfig())
+}
+
 // Load the kubeconfig from file.
 func Load(path string) (*Merger, error) {
 	config, err := clientcmd.LoadFromFile(path)
@@ -129,7 +134,7 @@ func (merger *Merger) Merge(config *clientcmdapi.Config, options MergeOptions) e
 			mergedName = options.ForceContextName
 		}
 
-		oldContext, exists := merger.Clusters[mergedName]
+		oldContext, exists := merger.Contexts[mergedName]
 
 		newContext.LocationOfOrigin = ""
 
@@ -138,13 +143,13 @@ func (merger *Merger) Merge(config *clientcmdapi.Config, options MergeOptions) e
 		}
 
 		if exists && !reflect.DeepEqual(oldContext, newContext) {
-			decision, err := options.ConflictHandler(Cluster, name)
+			decision, err := options.ConflictHandler(Context, name)
 			if err != nil {
 				return err
 			}
 
 			if decision == RenameDecision {
-				mergedName = merger.rename(Cluster, mergedName)
+				mergedName = merger.rename(Context, mergedName)
 			}
 		}
 
