@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
 #
-# Generated on 2025-03-12T10:31:21Z by kres ec5ec04.
+# Generated on 2026-04-08T12:45:23Z by kres b6d29bf.
 
 *
 !kubeconfig.go
@@ -12,3 +12,5 @@
 !.golangci.yml
 !README.md
 !.markdownlint.json
+!hack/govulncheck.sh
+!.disvulncheck.yaml
